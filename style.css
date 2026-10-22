@@ -1,0 +1,18 @@
+ body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #071a2f, #123e65, #071a2f);
+    color: white;
+}/* PhishLens - Beautiful background */
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #07152e, #123b65, #087e9e);
+    color: white;
+    text-align: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 30px 15px;
+    box-sizing: border-box;
+}
