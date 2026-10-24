@@ -1,1 +1,114 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhishLens - URL Detector</title>
+    <link rel="stylesheet"
+  href="{{ url_for('static',
+   filename='style.css') }}">
+    </head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background:linear-gradient(135deg, #07152e, #123b65, #087e9e);
+            color: white;
+            text-align: center;
+            padding: 50px 15px;
+        }
 
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #1e293b;
+            padding: 30px;
+            border-radius: 15px;
+        }
+
+        h1 {
+            color: #22d3ee;
+        }
+
+        input {
+            width: 90%;
+            padding: 13px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border: none;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: #0891b2;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0e7490;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #334155;
+            border-radius: 8px;
+            overflow-wrap: anywhere;
+        }
+
+        .warning {
+            color: #fbbf24;
+        }
+
+        .note {
+            color: #cbd5e1;
+            font-size: 13px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🛡️ PhishLens</h1>
+        <h3>Phishing URL Detection System</h3>
+
+        <p>Enter a website URL to check for suspicious signs.</p>
+
+        <form method="POST">
+            <input
+                type="text"
+                name="url"
+                placeholder="https://example.com"
+                value="{{ url }}"
+                required
+            >
+
+            <br>
+            <button type="submit">Check URL</button>
+        </form>
+
+        {% if result %}
+        <div class="result">
+            <h3>{{ result.status }}</h3>
+
+            {% if result.warnings %}
+                {% for warning in result.warnings %}
+                    <p class="warning">⚠️ {{ warning }}</p>
+                {% endfor %}
+            {% else %}
+                <p>No basic warning found.</p>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <p class="note">
+            This is a basic rule-based demo.
+            It cannot guarantee that a website is safe.
+        </p>
+    </div>
+</body>
+</html>
